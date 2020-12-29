@@ -1,9 +1,9 @@
-<%@page import="com.model2.domain.Board"%>
+<%@page import="com.study.springfinal.domain.Gallery"%>
 <%@ page contentType="text/html; charset=utf-8"%>
 <%
 	//out.print(request.getAttribute("result"));
 	int result = (Integer)request.getAttribute("result");	//수정결과값
-	Board board = (Board)request.getAttribute("board");
+	Gallery gallery = (Gallery)request.getAttribute("gallery");
 	
 	
 	StringBuilder sb = new StringBuilder();
@@ -14,7 +14,7 @@
 		sb.append("history.back();");
 	}else{
 		sb.append("alert('수정성공');");
-		sb.append("location.href='/board/detail?board_id="+board.getBoard_id()+"';");
+		sb.append("location.href='/gallery/detail?gallery_id="+gallery.getGallery_id()+"';");
 	}
 	sb.append("</script>");
 	

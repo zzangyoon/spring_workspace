@@ -1,9 +1,9 @@
-<%@page import="com.model2.domain.Comment"%>
 <%@page import="java.util.List"%>
 <%@ page contentType="text/json; charset=utf-8"%>
 <%
 	//out.print("this data is from comment_list.jsp");
 	//memo 40
+	/*
 	List<Comment> commentList  = (List)request.getAttribute("commentList");
 	
 	
@@ -26,4 +26,5 @@
 	sb.append("]");
 	sb.append("}");	
 	out.print(sb.toString()); //응답 컨텐츠 구성하기!! 즉 response 객체에 담아놓는 것임!!
+	*/
 %>
