@@ -21,6 +21,8 @@ public class Product {
 	
 	
 	//색상값들
-	String[] color;
-	String[] fit;
+	private Color[] color;
+	
+	//사이즈
+	private Psize[] psize;
 }
