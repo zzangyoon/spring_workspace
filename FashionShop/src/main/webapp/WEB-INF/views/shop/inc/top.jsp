@@ -1,4 +1,10 @@
+<%@page import="com.koreait.fashionshop.model.domain.SubCategory"%>
+<%@page import="com.koreait.fashionshop.model.domain.TopCategory"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%
+	List<TopCategory> topList = (List)request.getAttribute("topList");
+%>
     <div class="catagories-side-menu">
         <!-- Close Icon -->
         <div id="sideMenuClose">
@@ -10,59 +16,18 @@
                 <h6>Categories</h6>
                 <ul id="menu-content" class="menu-content collapse out">
                     <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#women" class="collapsed active">
-                        <a href="#">Woman wear <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="women">
-                            <li><a href="#">Midi Dresses</a></li>
-                            <li><a href="#">Maxi Dresses</a></li>
-                            <li><a href="#">Prom Dresses</a></li>
-                            <li><a href="#">Little Black Dresses</a></li>
-                            <li><a href="#">Mini Dresses</a></li>
+                    <%for(int i=0; i<topList.size(); i++){ %>
+                    <%TopCategory topCategory = topList.get(i); %>
+                    <li data-toggle="collapse" data-target="#<%=topCategory.getTopcategory_id() %>" class="collapsed active">
+                        <a href="#"><%=topCategory.getName() %><span class="arrow"></span></a>
+                        <ul class="sub-menu collapse" id="<%=topCategory.getTopcategory_id()%>">
+                        	<%for(int a=0; a<topCategory.getSubCategory().size(); a++){ %>
+                            <%SubCategory subCategory = topCategory.getSubCategory().get(a); %>
+                            <li><a href="#"><%=subCategory.getName() %></a></li>
+                            <%} %>
                         </ul>
                     </li>
-                    <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#man" class="collapsed">
-                        <a href="#">Man Wear <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="man">
-                            <li><a href="#">Man Dresses</a></li>
-                            <li><a href="#">Man Black Dresses</a></li>
-                            <li><a href="#">Man Mini Dresses</a></li>
-                        </ul>
-                    </li>
-                    <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#kids" class="collapsed">
-                        <a href="#">Children <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="kids">
-                            <li><a href="#">Children Dresses</a></li>
-                            <li><a href="#">Mini Dresses</a></li>
-                        </ul>
-                    </li>
-                    <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#bags" class="collapsed">
-                        <a href="#">Bags &amp; Purses <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="bags">
-                            <li><a href="#">Bags</a></li>
-                            <li><a href="#">Purses</a></li>
-                        </ul>
-                    </li>
-                    <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#eyewear" class="collapsed">
-                        <a href="#">Eyewear <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="eyewear">
-                            <li><a href="#">Eyewear Style 1</a></li>
-                            <li><a href="#">Eyewear Style 2</a></li>
-                            <li><a href="#">Eyewear Style 3</a></li>
-                        </ul>
-                    </li>
-                    <!-- Single Item -->
-                    <li data-toggle="collapse" data-target="#footwear" class="collapsed">
-                        <a href="#">Footwear <span class="arrow"></span></a>
-                        <ul class="sub-menu collapse" id="footwear">
-                            <li><a href="#">Footwear 1</a></li>
-                            <li><a href="#">Footwear 2</a></li>
-                            <li><a href="#">Footwear 3</a></li>
-                        </ul>
-                    </li>
+                    <%} %>
                 </ul>
             </div>
         </div>
@@ -144,22 +109,29 @@
 
                                     <div class="collapse navbar-collapse align-items-start collapse" id="karl-navbar">
                                         <ul class="navbar-nav animated" id="nav">
-                                            <li class="nav-item active"><a class="nav-link" href="index.html">Home</a></li>
+                                            <li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
                                             <li class="nav-item dropdown">
-                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
+                                                <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category</a>
                                                 <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                                    <a class="dropdown-item" href="index.html">Home</a>
-                                                    <a class="dropdown-item" href="shop.html">Shop</a>
-                                                    <a class="dropdown-item" href="product-details.html">Product Details</a>
-                                                    <a class="dropdown-item" href="cart.html">Cart</a>
-                                                    <a class="dropdown-item" href="checkout.html">Checkout</a>
+                                                	<%for(TopCategory topCategory : topList){ %>
+                                                    <a class="dropdown-item" href="/"><%=topCategory.getName() %></a>
+                                                	<%} %>
                                                 </div>
                                             </li>
-                                            <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#"><span class="karl-level">hot</span> Shoes</a></li>
+                                            <li class="nav-item"><a class="nav-link" href="/shop/product/list?subcategory_id=1">Shopping</a></li>
+                                            <li class="nav-item">
+                                            	<a class="nav-link" href="/shop/cart/list"><span class="karl-level">3</span>Cart</a>
+                                            </li>
                                             <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                                             <li class="nav-item"><a class="nav-link" href="/shop/member/registForm">SignUp</a></li>
-                                            <li class="nav-item"><a class="nav-link" href="#">SignIn</a></li>
+                                            <li class="nav-item">
+                                            
+                                            	<%if(session.getAttribute("member")==null){	//세션에 담겨진 데이터가 없다면 %>
+                                            		<a class="nav-link" href="/shop/member/loginForm">SignIn</a>
+                                            	<%}else{ %>
+                                            		<a class="nav-link" href="/shop/member/logout">SignOut</a>
+                                            	<%} %>
+                                            </li>
                                         </ul>
                                     </div>
                                 </nav>

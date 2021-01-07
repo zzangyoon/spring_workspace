@@ -43,14 +43,12 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public List selectById(int subcategory_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDAO.selectById(subcategory_id);
 	}
 
 	@Override
 	public Product select(int product_id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productDAO.select(product_id);
 	}
 
 	@Override

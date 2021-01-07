@@ -200,7 +200,7 @@ function setPsizeArray(){
 //상품 등록
 function regist(){
 	/* 비동기 전송시, 기존의 form을 이용할 수 있을까?	yes! */
-	$("textarea").val(CKEDITOR.instances.detail.getData());
+	//$("textarea").val(CKEDITOR.instances.detail.getData());
 	var formData = new FormData($("form")[0]);	//<form>태그와는 다르다... 
 													//전송할때 파라미터들을 담을수있지만 이 자체가 폼태그는 아니다!
 	
