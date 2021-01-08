@@ -1,5 +1,5 @@
 
-package com.koreait.fashionshop.common;
+package com.koreait.fashionshop.model.common;
 
 import java.util.List;
 
