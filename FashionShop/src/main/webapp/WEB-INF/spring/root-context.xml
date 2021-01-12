@@ -57,13 +57,13 @@
 	<!-- 공통코드는 이미 어노테이션으로 등록되어있다... Bell -->
 	
 	<!-- 어느시점에, 어떤 메서드 호출시 공통코드를 동작시킬지를 xml로 서술해보자 > namespace에서 aop체크 --><!-- 'bell을 공통 코드로 두었다' -->
-	<aop:config>
+<!-- 	<aop:config>
 		<aop:aspect id="bellAspect" ref="bell">
-		<!-- 어떤 메서드 실행시 관여할지 서술 : execution(패키지명+.(클래스생략)+*(메서드생략)+(**)(매개변수생략) )-->
+		어떤 메서드 실행시 관여할지 서술 : execution(패키지명+.(클래스생략)+*(메서드생략)+(**)(매개변수생략) )
 		<aop:pointcut expression="execution(public * com.koreait.fashionshop.model.bank.repository..*(**))" id="bellPointcut"/>
 		<aop:after method="sound" pointcut-ref="bellPointcut"/>
 		</aop:aspect>
-	</aop:config>
+	</aop:config> -->
 	
 	<!-- 방금 배운 AOP를 이용하여 트랜잭션 처리에 응용해보자! -->
 	<!-- 트랜잭션 설정해보자 > namespace에서  tx체크-->

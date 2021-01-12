@@ -3,6 +3,7 @@ package com.koreait.fashionshop.controller.payment;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -61,15 +62,20 @@ public class PaymentController {
 	
 	//장바구니 목록 요청
 	@RequestMapping(value="/shop/cart/list", method=RequestMethod.GET)
-	public ModelAndView getCartList(HttpSession session) {
+	public ModelAndView getCartList(HttpServletRequest request) {
 		//장바구니 목록 요청보다 앞서, 우선 보안처리부터 먼저 해야함
+		HttpSession session = request.getSession();
+		
+		/* 여기서 할 필요 없다 MemberSessionCheckAspect에서 하고있음
 		if(session.getAttribute("member")==null) {
 			//여기서 예외를 처리하면, 모든 컨트롤러 메서드마다 로그인과 관련된 코드가 중복되므로,
 			//예외를 일으며 하나의 메서드에서 처리하도록 재사용성을 높이자
 			throw new LoginRequiredException("로그인이 필요한 서비스입니다");
 		}
+		*/
 		
 		Member member = (Member)session.getAttribute("member");
+		
 		List topList = topCategoryService.selectAll();
 		List cartList = paymentService.selectCartList(member.getMember_id());	//회원 pk얻어와야함 (세션에서 얻어오자)
 		
@@ -165,16 +171,4 @@ public class PaymentController {
 		return messageData;
 	}
 	
-	@ExceptionHandler(LoginRequiredException.class)
-	public ModelAndView handleException(LoginRequiredException e) {
-		ModelAndView mav = new ModelAndView();
-		
-		MessageData messageData = new MessageData();
-		messageData.setResultCode(0);
-		messageData.setMsg(e.getMessage());
-		mav.addObject("messageData", messageData);
-		mav.setViewName("shop/error/message");
-		
-		return mav;
-	}
 }

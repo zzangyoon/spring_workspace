@@ -2,6 +2,7 @@ package com.koreait.fashionshop.controller.payment;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -33,10 +34,8 @@ public class RestPaymentController {
 	//장바구니에 상품 담기 요청
 	@RequestMapping(value="/shop/cart/regist", method=RequestMethod.POST)
 	@ResponseBody
-	public MessageData registCart(Cart cart, HttpSession session) {
-		if(session.getAttribute("member")==null) {
-			throw new LoginRequiredException("로그인이 필요한 서비스입니다");
-		}
+	public MessageData registCart(Cart cart, HttpServletRequest request) {
+		HttpSession session = request.getSession();
 		
 		Member member = (Member)session.getAttribute("member");
 		
@@ -65,7 +64,7 @@ public class RestPaymentController {
 		
 		return messageData;
 	}
-	
+	/*
 	@ExceptionHandler(LoginRequiredException.class)
 	@ResponseBody
 	public MessageData handleException(LoginRequiredException e) {
@@ -75,4 +74,5 @@ public class RestPaymentController {
 		
 		return messageData;
 	}
+	*/
 }

@@ -5,7 +5,11 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Pager {
+	private List list;
 	private int totalRecord;	
 	private int pageSize = 10;	
 	private int totalPage;		
@@ -18,6 +22,7 @@ public class Pager {
 	
 	
 	public void init(HttpServletRequest request, List list) {
+		this.list = list;	//보관
 		totalRecord = list.size();
 		totalPage = (int)Math.ceil((float)totalRecord/pageSize);
 		
@@ -32,6 +37,10 @@ public class Pager {
 		num = totalRecord - curPos;
 	}
 
+	public List getList() {
+		return list;
+	}
+	
 	public int getTotalRecord() {
 		return totalRecord;
 	}
