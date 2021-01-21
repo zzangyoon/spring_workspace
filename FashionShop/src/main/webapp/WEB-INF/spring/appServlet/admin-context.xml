@@ -48,8 +48,8 @@
 	
 	<!-- 설정파일을 열어서, 메인 호출시 벨을 울리는 AOP설정 -->
 	<beans:bean id="bell" class="com.koreait.fashionshop.model.common.Bell"/>
-	<beans:bean id="memberSessionCheckAspect" class="com.koreait.fashionshop.aop.MemberSessionCheckAspect"/>
-	<beans:bean id="globalDataAspect" class="com.koreait.fashionshop.aop.GlobalDataAspect"/>
+	<beans:bean id="memberSessionCheckAspect" class="com.koreait.fashionshop.client.aop.MemberSessionCheckAspect"/>
+	<beans:bean id="globalDataAspect" class="com.koreait.fashionshop.client.aop.GlobalDataAspect"/>
 	
 	<aop:config>
 	
@@ -74,6 +74,6 @@
 	</aop:config>
 	
 	<!-- 글로벌 예외객체 추가 -->
-	<beans:bean id="globalExceptionHandler" class="com.koreait.fashionshop.aop.GlobalExceptionHandler"/>
+	<beans:bean id="globalExceptionHandler" class="com.koreait.fashionshop.client.aop.GlobalExceptionHandler"/>
 	
 </beans:beans>

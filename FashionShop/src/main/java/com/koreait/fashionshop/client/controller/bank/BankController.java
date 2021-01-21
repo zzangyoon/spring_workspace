@@ -1,4 +1,4 @@
-package com.koreait.fashionshop.controller.bank;
+package com.koreait.fashionshop.client.controller.bank;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

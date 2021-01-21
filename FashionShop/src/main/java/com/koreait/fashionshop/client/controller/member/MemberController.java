@@ -1,4 +1,4 @@
-package com.koreait.fashionshop.controller.member;
+package com.koreait.fashionshop.client.controller.member;
 
 import java.util.List;
 

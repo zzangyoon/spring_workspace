@@ -1,4 +1,4 @@
-package com.koreait.fashionshop.aop;
+package com.koreait.fashionshop.client.aop;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

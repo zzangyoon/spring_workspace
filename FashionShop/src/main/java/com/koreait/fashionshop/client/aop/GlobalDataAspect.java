@@ -1,4 +1,4 @@
-package com.koreait.fashionshop.aop;
+package com.koreait.fashionshop.client.aop;
 
 import java.util.List;
 
@@ -34,7 +34,8 @@ public class GlobalDataAspect {
 		if(	uri.equals("/shop/member/login") ||	//클라이언트의 요청이 topList를 필요로 하지 않은 경우 : /shop/member/login, /shop/member/regist
 			uri.equals("/shop/member/regist") ||
 			uri.equals("/admin") ||
-			uri.equals("/admin/product/regist")
+			uri.equals("/admin/product/regist")||
+			uri.equals("/admin/product/excel/registform")
 			
 				) {
 			result = joinPoint.proceed();	//원래 호출하려 했던 메서드 호출! go ahead
